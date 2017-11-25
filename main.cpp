@@ -15,6 +15,8 @@ QString hash_sha1(QString s1, QString s2, QString s3);
 QString xor_f(QString s1, QString s2);
 QString gen_sole(int n);
 
+BigUnsigned pow_u(BigUnsigned b, BigUnsigned i);
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -88,7 +90,7 @@ try {
 
     BigUnsigned p1 = k_t * modexp(g_t,x_t,N_t);
     BigInteger p2 = BigInteger(B) - BigInteger(p1);
-    BigUnsigned p3 = a_rand + u_t;
+    BigUnsigned p3 = a_rand + u_t * x_t;
     BigUnsigned S_c = modexp(p2,p3,N_t);
     QString K_c = hash_sha1(QString().fromStdString(bigUnsignedToString(S_c)));
 
